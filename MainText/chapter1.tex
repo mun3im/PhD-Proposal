@@ -1,0 +1,64 @@
+\chapter{Introduction}
+
+\section{Background}
+
+
+
+Sound event recognition is a growing area of research with in recent years.
+Automatic recognition of sound events is useful in many applications including audio surveillance (\cite{Foggia2015}), multimedia retrieval (\cite{Wold1996}), animal monitoring \citep{Mcloughlin2019} and environmental sound monitoring (\cite{Chu2009}).
+Bird recognition by acoustic means is one of the interesting sub-areas of sound event recognition.
+
+The rate of biodiversity loss and ecological degradation is unprecedented. 
+Birds play an important role in the ecosystem as they disperse plant seeds, pollinate plants, and subdue pest populations and birds are good indicators of the health of the environment \citep{Priyadarshani2018}.
+The use of sounds for monitoring of bird species offers an effective approach as most birds use vocalisations as their primary communication method (\cite{Gregory2010}).
+%Birds are good subjects for bioacoustic census methods since most of the species use vocalizations to attract mates and to advertise territories (\cite{Gaunt2004})
+
+Acoustic analysis of birds is challenging. Most people can recognize at most only a few birds and there are over nine thousand bird species in the world.
+Most researchers use passive acoustic monitors (PAMs) left on site to collect recordings spanning hundreds of hours resulting in large volumes of data \citep{Sugai2019}. 
+PAMs provide many benefits over the use of field observers, such as collecting data at large spatial area and different times of day or year (\cite{Digby2013}).
+Due the overwhelming amount of data, bird identification remains an almost impossible task to be done manually.
+Therefore, automating the process of bird identification is important.
+Another issue is that as PAMs could be remotely located, retrieving the recorded sound files may require substantial effort and impose delays of days or weeks after the actually recording.
+
+%Acoustic sensors left on site can continuously capture the acoustic activity and as 
+%The greatest challenge with automated recordings though is to find the sounds of bird species of interest within these extensively long recordings
+
+The edge computing and Internet-of-Things (IoT) paradigms allow data processing tasks to be performed at the edge of the network, close to the point of data acquisition.
+This new approach reduces system running time, memory requirements and energy consumption for a wide range of big data applications.
+Combined with long-range low-power radio networks, applying the approach for bird recognition should reduce the need to manually retrieve sound recordings which contain mostly redundant information anyway.
+
+
+Bird sound recognition applies many of the same techniques as sound event detection and keyword spotting (KWS).
+For large scale bird recognition, the highest accuracies are currently achieved using ImageNet-class convolutional neural networks (CNNs) \citep{Kahl2019}.
+These large CNNs are computationally complex in terms of multiply-and-add operations and require a lot of memory.
+For edge computing, as an alternative is required to preserve battery life and reduce systems costs.
+
+This research aims to identify and propose suitable low-complexity algorithms for bird sound detection and classification.
+The approach to apply the two-stage cascade architecture used in KWS (\cite{Sigtia2018}).
+The first stage is the bird detector.
+It is a binary classifier that detects a bird sound of any kind. 
+In a battery-powered device, the first stage is always turned on, therefore, performs minimal computations to reduce energy usage.
+The detector stage is to be constructed using a binarized convolutional network (BNN). The second stage is the bird classifier.
+The output of the classifier is the identified bird species.
+This stage requires more computational effort as it consists of an integer CNN.
+In a battery-powered device, the second stage is turned on only when the first stage detects a bird sound to reduce energy consumption and improve recognition accuracy.
+In addition to exploring several BNN and CNN configuration, the research will investigate the impact of various audio features on recognition accuracy.
+
+
+\section{Research Questions}
+
+Some	 of	 the	major	 questions	 that	 are	 addressed	 in	 audio recognition:
+
+\begin{itemize}
+\item	 “If	 waveforms	 are	 processed,	 what	 techniques	 can	 be	 adopted	for	signal	processing?”
+\item	“If	spectrograms	are	processed,	what	 techniques	can	be	
+adopted	for	time-frequency	domain?”
+\item	“What	are	the	useful	acoustic	components	for	animal	call	
+recognition?”
+\item Are features such as MFCC, frame power effective for classification
+\item	 “How	 can	 the	 developed	 species	 recognition	 system	 be	 evaluated?”
+\end{itemize}
+
+
+
+\section{Problem Statement}
