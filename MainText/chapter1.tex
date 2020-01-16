@@ -5,17 +5,17 @@
 
 
 Sound event recognition is a growing area of research with in recent years.
-Automatic recognition of sound events is useful in many applications including audio surveillance (\cite{Foggia2015}), multimedia retrieval (\cite{Wold1996}), animal monitoring \citep{Mcloughlin2019} and environmental sound monitoring (\cite{Chu2009}).
+Automatic recognition of sound events is useful in many applications including audio surveillance \cite{Foggia2015}, multimedia retrieval \cite{Wold1996}, animal monitoring \citep{Mcloughlin2019} and environmental sound monitoring \cite{Chu2009}.
 Bird recognition by acoustic means is one of the interesting sub-areas of sound event recognition.
 
 The rate of biodiversity loss and ecological degradation is unprecedented. 
 Birds play an important role in the ecosystem as they disperse plant seeds, pollinate plants, and subdue pest populations and birds are good indicators of the health of the environment \citep{Priyadarshani2018}.
-The use of sounds for monitoring of bird species offers an effective approach as most birds use vocalisations as their primary communication method (\cite{Gregory2010}).
+The use of sounds for monitoring of bird species offers an effective approach as most birds use vocalisations as their primary communication method \cite{Gregory2010}.
 %Birds are good subjects for bioacoustic census methods since most of the species use vocalizations to attract mates and to advertise territories (\cite{Gaunt2004})
 
 Acoustic analysis of birds is challenging. Most people can recognize at most only a few birds and there are over nine thousand bird species in the world.
 Most researchers use passive acoustic monitors (PAMs) left on site to collect recordings spanning hundreds of hours resulting in large volumes of data \citep{Sugai2019}. 
-PAMs provide many benefits over the use of field observers, such as collecting data at large spatial area and different times of day or year (\cite{Digby2013}).
+PAMs provide many benefits over the use of field observers, such as collecting data at large spatial area at different times of day or year and having a permanent record \cite{Digby2013}.
 Due the overwhelming amount of data, bird identification remains an almost impossible task to be done manually.
 Therefore, automating the process of bird identification is important.
 Another issue is that as PAMs could be remotely located, retrieving the recorded sound files may require substantial effort and impose delays of days or weeks after the actually recording.
@@ -33,8 +33,9 @@ For large scale bird recognition, the highest accuracies are currently achieved 
 These large CNNs are computationally complex in terms of multiply-and-add operations and require a lot of memory.
 For edge computing, as an alternative is required to preserve battery life and reduce systems costs.
 
-This research aims to identify and propose suitable low-complexity algorithms for bird sound detection and classification.
-The approach to apply the two-stage cascade architecture used in KWS (\cite{Sigtia2018}).
+%This research aims to identify and propose suitable low-complexity algorithms for bird sound detection and classification.
+
+The approach to apply the two-stage cascade architecture used in KWS \cite{Sigtia2018,Price2018,Liu2019}.
 The first stage is the bird detector.
 It is a binary classifier that detects a bird sound of any kind. 
 In a battery-powered device, the first stage is always turned on, therefore, performs minimal computations to reduce energy usage.
@@ -42,23 +43,31 @@ The detector stage is to be constructed using a binarized convolutional network 
 The output of the classifier is the identified bird species.
 This stage requires more computational effort as it consists of an integer CNN.
 In a battery-powered device, the second stage is turned on only when the first stage detects a bird sound to reduce energy consumption and improve recognition accuracy.
-In addition to exploring several BNN and CNN configuration, the research will investigate the impact of various audio features on recognition accuracy.
+%In addition to exploring several BNN and CNN configuration, the research will investigate the impact of various audio features on recognition accuracy.
 
 
 \section{Research Questions}
 
-Some	 of	 the	major	 questions	 that	 are	 addressed	 in	 audio recognition:
+A bird detector detects bird vocalizations and enables the next processing step when a bird sound is detected.
+It must run at all times to continuously monitors all audio signals. However, this implies a low power design with sufficient accuracy.
 
-\begin{itemize}
-\item	 “If	 waveforms	 are	 processed,	 what	 techniques	 can	 be	 adopted	for	signal	processing?”
-\item	“If	spectrograms	are	processed,	what	 techniques	can	be	
-adopted	for	time-frequency	domain?”
-\item	“What	are	the	useful	acoustic	components	for	animal	call	
-recognition?”
-\item Are features such as MFCC, frame power effective for classification
-\item	 “How	 can	 the	 developed	 species	 recognition	 system	 be	 evaluated?”
-\end{itemize}
+\begin{description}
+    \item [Research Question 1:] What is a suitable algorithm for bird sound detector which has the minimum complexity?
+    \item [Research Question 2:] What is the accuracy and energy consumption of the bird detector algorithm?
+\end{description}
 
+A bird classifier receives audio and performs species identification when it is turned on. To get highest power efficiency, it has to run with minimal resources.
 
+\begin{description}
+    \item [Research Question 1:] What is a suitable algorithm for bird classifier which has the minimum complexity?
+    \item [Research Question 2:] What is the accuracy and energy consumption of the bird classifier algorithm?
+\end{description}
 
-\section{Problem Statement}
+\section{Research Objectives}
+
+To answer the research questions, two research objectives are needed.
+
+\begin{enumerate}
+    \item To investigate the bird sound detector algorithm which has the minimal complexity with sufficient accuracy.
+    \item To design a bird species classifier detection algorithm which has the minimal complexity with  accuracy.
+\end{enumerate}

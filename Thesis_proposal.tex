@@ -16,7 +16,8 @@
 
 \usepackage{longtable} % tables that can span several pages
 \usepackage{fancyhdr} % For the headers
-\usepackage[font=small,bf]{caption}%FIG in bold
+\usepackage[font=footnotesize,bf]{caption}%FIG in bold
+\usepackage{subcaption}
 
 \usepackage{float,placeins} % Force table Here
 \usepackage{booktabs}
@@ -40,21 +41,21 @@
   {\normalfont\sffamily\huge\bfseries\color{FireBrick}}
   {\chaptertitlename\ \thechapter}{20pt}{\Huge}
 \titleformat{\section}
-  {\normalfont\sffamily\Large\bfseries\color{DodgerBlue}}
+  {\normalfont\sffamily\Large\bfseries\color{SteelBlue}}
   {\thesection}{1em}{}
 
 
 \usepackage{emptypage} % No headers on an empty page
 
-\usepackage{eso-pic} % For the background picture on the title page
-\newcommand\BackgroundPic{%
-\put(-250,-160){%
-\parbox[b][\paperheight]{\paperwidth}{%
-\vfill
-\centering
+%\usepackage{eso-pic} % For the background picture on the title page
+%\newcommand\BackgroundPic{%
+%\put(-250,-160){%
+%\parbox[b][\paperheight]{\paperwidth}{%
+%\vfill
+%\centering
 %\includegraphics[width=\paperwidth]{symbol.jpg}%
-\vfill
-}}}
+%\vfill
+%}}}
 
 \usepackage{hyperref} % Adds clickable links at references
 \usepackage{fourier}
@@ -86,12 +87,13 @@
 %{\large \scshape Universiti Malaya}\\[1.4cm]
 {\Large PhD Thesis Proposal}\\[0.5cm]
 \rule{\textwidth}{1.5pt}\\[0cm]
-{\huge \bfseries \thesistitle \par \ }\\[-0.5cm]
+{\huge \bfseries \sffamily \thesistitle \par \ }\\[-0.5cm]
 \rule{\textwidth}{1.5pt}\\[2.5cm]
-\hfill  by\\[1cm]
+\hfill  \textit{by}\\[1cm]
 \hfill  {\large \bfseries\name}\\
 \vfill
-{\hfill \large Supervisors: \textbf{\supervisor}} \\ [.5cm]
+\hfill  \textit{Supervisors}\\[.8cm]
+{\hfill \large  \textbf{\supervisor}} \\ [.5cm]
 \ifx\cosupervisor\undefined\else{\hfill \large  \textbf{\cosupervisor}} \\ \fi
 \vspace{1cm}
 \hfill  \submissiondate
@@ -117,6 +119,10 @@
 \unnumberedchapter{Contents}
 \tableofcontents % Write out the Table of Contents
 
+\unnumberedchapter{List of Abbreviations}
+\input{Preamble/abbreviations} % Import your chapters here
+
+
 %----------------------------------------------------------------------------------------
 %	THESIS MAIN TEXT - CHAPTERS
 %----------------------------------------------------------------------------------------
@@ -129,7 +135,7 @@
 \input{MainText/chapter2} 
 \input{MainText/chapter3} 
 \input{MainText/chapter4} 
-\input{MainText/chapter5} 
+%\input{MainText/chapter5} 
  
 %----------------------------------------------------------------------------------------
 %	APPENDICES
@@ -151,6 +157,5 @@
 \unnumberedchapter{Bibliography} % Title of the unnumbered chapter
 %\bibliography{references} % 
 \printbibliography
-
 
 \end{document}  
