@@ -192,8 +192,8 @@ A typical CNN is illustrated in Fig. \ref{typicalcnn}. The three types of layers
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1.33]{typicalcnn}
-\caption{An example of typical CNN with two convolution
-layers, two pooling layers and two fully-connected (fc) layers.
+\caption{An example CNN with two convolution
+layers, two pooling layers and two fully-connected (FC) layers.
 Cubes are 3-D tensors and rectangular shapes are 1-D tensors,
 and the relative tensor size presents actual data volume \cite{Chen2016}.}
 \label{typicalcnn}
@@ -405,7 +405,7 @@ One approach to power efficiency is to build CNNs knowing the effects of design 
 In the SqueezeNext model, power is reduced by removing operations that do not contribute to accuracy \cite{Gholami2018}. SqueezeNeXt design variations are more 2x faster and power efficient than the already small MobileNet.
 
 
-A more popular approach to power efficiency is to build CNNs with just enough complexity to match the application at hand. Table \ref{customcnn} lists CNNs that work with spectrograms. They do not use the typical $224\times 224$ or $227\times 227$ image size used by ImageNet-class CNNs. Instead, the inputs are much wider and shorter to match the shape of spectrograms.
+A more popular approach to power efficiency is to build CNNs with just enough complexity to match the application at hand. Table \ref{customcnn} lists CNNs that work with spectrograms. They do not use the typical square image shape used by ImageNet-class CNNs. Instead, the inputs are elongated to match the shape of spectrograms.
 
 
 

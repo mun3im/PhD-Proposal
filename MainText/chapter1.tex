@@ -28,6 +28,7 @@ This new approach reduces system running time, memory requirements and energy co
 Combined with long-range low-power radio networks, applying the approach for bird recognition should reduce the need to manually retrieve sound recordings which contain mostly redundant information anyway.
 
 
+
 Bird sound recognition applies many of the same techniques as sound event detection and keyword spotting (KWS).
 For large scale bird recognition, the highest accuracies are currently achieved using ImageNet-class convolutional neural networks (CNNs) \citep{Kahl2019}.
 These large CNNs are computationally complex in terms of multiply-and-add operations and require a lot of memory.
@@ -46,28 +47,60 @@ In a battery-powered device, the second stage is turned on only when the first s
 %In addition to exploring several BNN and CNN configuration, the research will investigate the impact of various audio features on recognition accuracy.
 
 
+
 \section{Research Questions}
 
 A bird detector detects bird vocalizations and enables the next processing step when a bird sound is detected.
 It must run at all times to continuously monitors all audio signals. However, this implies a low power design with sufficient accuracy.
 
 \begin{description}
-    \item [Research Question 1:] What is a suitable algorithm for bird sound detector which has the minimum complexity?
+    \item [Research Question 1:] How can the bird sound detector be devised with minimum complexity with sufficient accuracy?
     \item [Research Question 2:] What is the accuracy and energy consumption of the bird detector algorithm?
 \end{description}
 
 A bird classifier receives audio and performs species identification when it is turned on. To get highest power efficiency, it has to run with minimal resources.
 
 \begin{description}
-    \item [Research Question 1:] What is a suitable algorithm for bird classifier which has the minimum complexity?
-    \item [Research Question 2:] What is the accuracy and energy consumption of the bird classifier algorithm?
+    \item [Research Question 3:] How can the bird identifier algorithm improved to achieve high accuracy with minimum complexity?
+    \item [Research Question 4:] What is the accuracy and energy consumption of the bird classifier algorithm?
 \end{description}
+
+\section{Problem Statement}
+
+Bird recognition is important in environmental studies.
+Many studies rely on acoustic detection as birds are easily detected by sound. Birds can be identified from the recordings either by human listeners or by bird recognition software.
+
+Most of the contents of sound files do not really contain useful information. If bird recognition can be performed at the point of sound recording, the information can be transmitted through the network using low bit-rate long-range radio. Hence, there will be no need to physically retrieve the sound files from the recording equipment and there will be no need to store the sound data.
+
+Many researchers focus on recognizing a large number of species from large sound files. The state-of-the-art bird recognition methos for this approach is to use ImageNet-class convolutional neural networks (CNNs).
+The large CNNs are unsuitable for embedded implementation as they require a lot energy and memory space. Furthermore, at any observation point, there is little chance of finding hundreds of species. Therefore, a small CNN is sufficient to perform recognition at the edge.
+
+The key problems in this study are:
+
+\begin{itemize}
+    \item Absence of low-power bird recognizer which can be implemented on low-resource IoT edge devices
+    \item Lack of analysis of power-efficiency vis-a-vis accuracy of CNNs
+\end{itemize}
 
 \section{Research Objectives}
 
 To answer the research questions, two research objectives are needed.
 
 \begin{enumerate}
-    \item To investigate the bird sound detector algorithm which has the minimal complexity with sufficient accuracy.
-    \item To design a bird species classifier detection algorithm which has the minimal complexity with  accuracy.
+    \item To investigate the bird sound detector algorithm with minimal complexity with sufficient accuracy.
+    \item To design a bird species classifier detection algorithm which has high accuracy with low complexity
 \end{enumerate}
+
+\section{Scope and Limitations}
+
+The study aims to produce a bird recognition framework which is intended to run on low-resource edge devices. The machine learning classifier is limited to convolutional neural networks (CNN). The front-end processing is limited to manipulation of spectrograms. To meet low-resource targets,  ImageNet-class CNNs will not be used.
+
+The recognition framework can classify birds not exceed 20 species.
+During development, the classifier is implemented and evaluated on a personal computing platform. The classifier are to be evaluated in the metrics of accuracy, memory requirements and multiply-accumulate (MAC) operations. Energy consumption will be estimated from MAC finding.
+
+Upon identifying the suitable algorithms, the proof of concept will implemented on the Raspberry Pi platform only. Energy consumption will be measured to verify value estimated during algorithm development.
+
+\section{Significance of the Study}
+
+The study aims to contribute a low-power bird recognizer which can be implemented on low-resource IoT edge devices. 
+Additionally, there will be an analysis of power-efficiency against accuracy of CNNs. These contributions could expand the use of machine learning at edge. In environmental studies, the results should eventually slow down the biodiversity loss facing our planet.
